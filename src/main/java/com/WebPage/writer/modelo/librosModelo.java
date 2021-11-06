@@ -4,7 +4,6 @@
  */
 package com.WebPage.writer.modelo;
 
-import java.awt.Image;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,7 +22,6 @@ public class librosModelo {
     private String editorial;
     private String paginas;
     private String idioma;
-    private Image imagen;
 
     public String getId() {
         return id;
@@ -81,13 +79,5 @@ public class librosModelo {
         this.idioma = idioma;
     }
 
-    public Image getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(Image imagen) {
-        this.imagen = imagen;
-    }
-    
     
 }
