@@ -4,8 +4,8 @@
  */
 package com.WebPage.writer.controlador;
 
-import com.WebPage.writer.modelo.usuariosModelo;
-import com.WebPage.writer.repositorio.usuariosRepositorio;
+import com.WebPage.writer.modelo.librosModelo;
+import com.WebPage.writer.repositorio.librosRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -28,33 +28,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*",methods = {RequestMethod.POST,RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT})
 
-@RequestMapping("/api/usuarios")
-public class usuariosControlador {
+@RequestMapping("/api/libros")
+public class librosControlador {
     
     /// Variable de interfaz de Modelo
     @Autowired
-    private usuariosRepositorio usu;
+    private librosRepositorio lib;
     
     /// Procedimiento guardar
     @PostMapping("/guardar")
-    public usuariosModelo guardarUsuario(@Validated @RequestBody usuariosModelo varU){
-        return usu.insert(varU);
+    public librosModelo guardarLibro(@Validated @RequestBody librosModelo varL){
+        return lib.insert(varL);
     }
     
     ///Procedimiento consulta general
     @GetMapping("/consultar")
-    public List<usuariosModelo> consultarUsuarios(){
-        return usu.findAll();
+    public List<librosModelo> consultarLibros(){
+        return lib.findAll();
     }
     
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
-    public usuariosModelo actualizarUsuario(@PathVariable String id, @Validated @RequestBody usuariosModelo varU){
-        return usu.save(varU);
+    public librosModelo actualizarLibro(@PathVariable String id, @Validated @RequestBody librosModelo varL){
+        return lib.save(varL);
     }
     
     /// Procedimiento eliminar usuario
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarUsuario(@PathVariable String id){
+    public void eliminarLibro(@PathVariable String id){
     }
 }
