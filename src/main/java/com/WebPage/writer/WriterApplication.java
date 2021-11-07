@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class WriterApplication {
 
   @Bean
-  public Docket UsuariosApi() {
+  public Docket writerApi() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select() 
         .apis(RequestHandlerSelectors.any()) 
@@ -24,8 +24,7 @@ public class WriterApplication {
   
 	public static void main(String[] args) {
 		SpringApplication.run(WriterApplication.class, args);
-                System.out.println("hola");
-              
+                              
 	}
 
 }

@@ -11,17 +11,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author Andres
  */
-@Document(collection="libros")
-public class librosModelo {
+@Document(collection="librosFisicos")
+public class librosFisicosModelo {
     
     @Id
     private String id;
     private String nombre;
+    private String formato;
     private String autor;
-    private String genero;
     private String editorial;
+    private String categoria;
     private String paginas;
+    private String año;
     private String idioma;
+    private String precio;
 
     public String getId() {
         return id;
@@ -39,20 +42,20 @@ public class librosModelo {
         this.nombre = nombre;
     }
 
+    public String getFormato() {
+        return formato;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
     public String getAutor() {
         return autor;
     }
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public String getEditorial() {
@@ -63,12 +66,28 @@ public class librosModelo {
         this.editorial = editorial;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public String getPaginas() {
         return paginas;
     }
 
     public void setPaginas(String paginas) {
         this.paginas = paginas;
+    }
+
+    public String getAño() {
+        return año;
+    }
+
+    public void setAño(String año) {
+        this.año = año;
     }
 
     public String getIdioma() {
@@ -79,5 +98,14 @@ public class librosModelo {
         this.idioma = idioma;
     }
 
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    
     
 }

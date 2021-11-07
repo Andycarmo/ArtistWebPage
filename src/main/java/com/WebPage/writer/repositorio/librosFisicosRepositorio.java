@@ -6,7 +6,7 @@ package com.WebPage.writer.repositorio;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import com.WebPage.writer.modelo.librosModelo;
+import com.WebPage.writer.modelo.librosFisicosModelo;
 
 /**
  *
@@ -14,6 +14,6 @@ import com.WebPage.writer.modelo.librosModelo;
  */
 
 @Repository
-public interface librosRepositorio extends MongoRepository<librosModelo, String>{
+public interface librosFisicosRepositorio extends MongoRepository<librosFisicosModelo, String>{
     
 }

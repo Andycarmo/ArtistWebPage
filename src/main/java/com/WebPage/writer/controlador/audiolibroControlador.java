@@ -4,8 +4,8 @@
  */
 package com.WebPage.writer.controlador;
 
-import com.WebPage.writer.modelo.librosModelo;
-import com.WebPage.writer.repositorio.librosRepositorio;
+import com.WebPage.writer.modelo.audiolibroModelo;
+import com.WebPage.writer.repositorio.audiolibroRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -28,33 +28,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*",methods = {RequestMethod.POST,RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT})
 
-@RequestMapping("/api/libros")
-public class librosControlador {
+@RequestMapping("/api/audiolibro")
+public class audiolibroControlador {
     
     /// Variable de interfaz de Modelo
     @Autowired
-    private librosRepositorio lib;
+    private audiolibroRepositorio aud;
     
     /// Procedimiento guardar
     @PostMapping("/guardar")
-    public librosModelo guardarLibro(@Validated @RequestBody librosModelo varL){
-        return lib.insert(varL);
+    public audiolibroModelo guardarAudiolibro(@Validated @RequestBody audiolibroModelo varA){
+        return aud.insert(varA);
     }
     
     ///Procedimiento consulta general
     @GetMapping("/consultar")
-    public List<librosModelo> consultarLibros(){
-        return lib.findAll();
+    public List<audiolibroModelo> consultarAudiolibro(){
+        return aud.findAll();
     }
     
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
-    public librosModelo actualizarLibro(@PathVariable String id, @Validated @RequestBody librosModelo varL){
-        return lib.save(varL);
+    public audiolibroModelo actualizarAudiolibro(@PathVariable String id, @Validated @RequestBody audiolibroModelo varE){
+        return aud.save(varE);
     }
     
-    /// Procedimiento eliminar usuario
+    /// Procedimiento eliminar audiolibro
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarLibro(@PathVariable String id){
+    public void eliminarAudiolibro(@PathVariable String id){
     }
 }
