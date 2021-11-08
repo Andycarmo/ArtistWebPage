@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
- * @author Andres
+ * @author Writer
  */
 @Document(collection="ebooks")
 public class ebooksModelo {

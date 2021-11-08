@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author Writer
  */
-@Document(collection="librosFisicos")
-public class librosFisicosModelo {
+@Document(collection="librosPropios")
+public class librosPropiosModelo {
     
     @Id
     private String id;
@@ -106,6 +106,7 @@ public class librosFisicosModelo {
         this.precio = precio;
     }
 
+    
     
     
 }

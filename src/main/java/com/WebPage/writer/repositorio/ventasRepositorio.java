@@ -4,15 +4,16 @@
  */
 package com.WebPage.writer.repositorio;
 
-import com.WebPage.writer.modelo.audiolibrosModelo;
+import com.WebPage.writer.modelo.ventasModelo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Andres
+ * @author Writer
  */
+
 @Repository
-public interface audiolibroRepositorio extends MongoRepository<audiolibrosModelo, String>{
+public interface ventasRepositorio extends MongoRepository<ventasModelo, String>{
     
 }

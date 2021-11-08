@@ -9,10 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
- * @author Andres
+ * @author Writer
  */
 @Document(collection="audiolibro")
-public class audiolibroModelo {
+public class audiolibrosModelo {
     
     @Id
     private String id;

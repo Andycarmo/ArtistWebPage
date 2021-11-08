@@ -4,8 +4,10 @@
  */
 package com.WebPage.writer.controlador;
 
-import com.WebPage.writer.modelo.audiolibroModelo;
-import com.WebPage.writer.repositorio.audiolibroRepositorio;
+import com.WebPage.writer.modelo.librosPropiosModelo;
+import com.WebPage.writer.modelo.podcastModelo;
+import com.WebPage.writer.repositorio.librosPropiosRepositorio;
+import com.WebPage.writer.repositorio.podcastRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -28,33 +30,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*",methods = {RequestMethod.POST,RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT})
 
-@RequestMapping("/api/audiolibro")
-public class audiolibroControlador {
+@RequestMapping("/api/podcast")
+public class podcastControlador {
     
     /// Variable de interfaz de Modelo
     @Autowired
-    private audiolibroRepositorio aud;
+    private podcastRepositorio pod;
     
     /// Procedimiento guardar
     @PostMapping("/guardar")
-    public audiolibroModelo guardarAudiolibro(@Validated @RequestBody audiolibroModelo varA){
-        return aud.insert(varA);
+    public podcastModelo guardarPodcast(@Validated @RequestBody podcastModelo varPC){
+        return pod.insert(varPC);
     }
     
     ///Procedimiento consulta general
     @GetMapping("/consultar")
-    public List<audiolibroModelo> consultarAudiolibro(){
-        return aud.findAll();
+    public List<podcastModelo> consultarPodcasts(){
+        return pod.findAll();
     }
     
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
-    public audiolibroModelo actualizarAudiolibro(@PathVariable String id, @Validated @RequestBody audiolibroModelo varE){
-        return aud.save(varE);
+    public podcastModelo actualizarPodcast(@PathVariable String id, @Validated @RequestBody podcastModelo varPC){
+        return pod.save(varPC);
     }
     
-    /// Procedimiento eliminar audiolibro
+    /// Procedimiento eliminar podcast
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarAudiolibro(@PathVariable String id){
+    public void eliminarPodcast(@PathVariable String id){
     }
+    
 }
