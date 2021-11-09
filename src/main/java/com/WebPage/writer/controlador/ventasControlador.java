@@ -7,6 +7,7 @@ package com.WebPage.writer.controlador;
 import com.WebPage.writer.modelo.ventasModelo;
 import com.WebPage.writer.repositorio.ventasRepositorio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,12 @@ public class ventasControlador {
     @GetMapping("/consultar")
     public List<ventasModelo> consultarVentas(){
         return ven.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<ventasModelo> consultarVentasID(@PathVariable String id){
+        return ven.findById(id);
     }
     
     /// Procedimiento actualizar

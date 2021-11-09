@@ -7,6 +7,7 @@ package com.WebPage.writer.controlador;
 import com.WebPage.writer.modelo.usuariosModelo;
 import com.WebPage.writer.repositorio.usuariosRepositorio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,12 @@ public class usuariosControlador {
     @GetMapping("/consultar")
     public List<usuariosModelo> consultarUsuarios(){
         return usu.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<usuariosModelo> consultarUsuariosID(@PathVariable String id){
+        return usu.findById(id);
     }
     
     /// Procedimiento actualizar

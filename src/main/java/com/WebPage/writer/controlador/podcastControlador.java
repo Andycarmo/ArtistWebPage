@@ -7,6 +7,7 @@ package com.WebPage.writer.controlador;
 import com.WebPage.writer.modelo.podcastModelo;
 import com.WebPage.writer.repositorio.podcastRepositorio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,12 @@ public class podcastControlador {
     @GetMapping("/consultar")
     public List<podcastModelo> consultarPodcasts(){
         return pod.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<podcastModelo> consultarPodcastsID(@PathVariable String id){
+        return pod.findById(id);
     }
     
     /// Procedimiento actualizar

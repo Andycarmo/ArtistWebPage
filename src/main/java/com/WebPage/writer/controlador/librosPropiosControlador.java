@@ -7,6 +7,7 @@ package com.WebPage.writer.controlador;
 import com.WebPage.writer.modelo.librosPropiosModelo;
 import com.WebPage.writer.repositorio.librosPropiosRepositorio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,12 @@ public class librosPropiosControlador {
     @GetMapping("/consultar")
     public List<librosPropiosModelo> consultarLibrosPropios(){
         return libP.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<librosPropiosModelo> consultarLibrosPropiosID(@PathVariable String id){
+        return libP.findById(id);
     }
     
     /// Procedimiento actualizar

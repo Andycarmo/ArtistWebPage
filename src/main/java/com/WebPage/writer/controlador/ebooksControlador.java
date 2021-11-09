@@ -7,6 +7,7 @@ package com.WebPage.writer.controlador;
 import com.WebPage.writer.modelo.ebooksModelo;
 import com.WebPage.writer.repositorio.ebooksRepositorio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,12 @@ public class ebooksControlador {
     @GetMapping("/consultar")
     public List<ebooksModelo> consultarEbooks(){
         return ebo.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<ebooksModelo> consultarEbookID(@PathVariable String id){
+        return ebo.findById(id);
     }
     
     /// Procedimiento actualizar

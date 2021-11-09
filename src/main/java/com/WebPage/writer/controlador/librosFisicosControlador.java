@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.WebPage.writer.repositorio.librosFisicosRepositorio;
+import java.util.Optional;
 
 /**
  *
@@ -45,6 +46,12 @@ public class librosFisicosControlador {
     @GetMapping("/consultar")
     public List<librosFisicosModelo> consultarLibros(){
         return lib.findAll();
+    }
+    
+    ///Procedimiento consulta individual
+    @GetMapping("/consultar/{id}")
+    public Optional<librosFisicosModelo> consultarLibrosID(@PathVariable String id){
+        return lib.findById(id);
     }
     
     /// Procedimiento actualizar
