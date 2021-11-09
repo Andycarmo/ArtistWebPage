@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author Writer
  */
-@Document(collection="audiolibro")
+@Document(collection="audiolibros")
 public class audiolibrosModelo {
     
     @Id

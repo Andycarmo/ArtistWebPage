@@ -4,9 +4,7 @@
  */
 package com.WebPage.writer.controlador;
 
-import com.WebPage.writer.modelo.librosPropiosModelo;
 import com.WebPage.writer.modelo.podcastModelo;
-import com.WebPage.writer.repositorio.librosPropiosRepositorio;
 import com.WebPage.writer.repositorio.podcastRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

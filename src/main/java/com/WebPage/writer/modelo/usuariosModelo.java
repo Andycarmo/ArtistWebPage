@@ -17,7 +17,7 @@ public class usuariosModelo {
     @Id
     private String id;
     private String nombres;
-    private String apellido;
+    private String apellidos;
     private String email;
     private String telefono;
     private String pais;
@@ -40,12 +40,12 @@ public class usuariosModelo {
         this.nombres = nombres;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getEmail() {
@@ -88,6 +88,4 @@ public class usuariosModelo {
         this.direccion = direccion;
     }
 
-   
-    
 }
