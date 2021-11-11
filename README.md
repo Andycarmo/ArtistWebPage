@@ -11,10 +11,10 @@ Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus v
 
 
 ## Versiones
->Master: Versiones => 1.0.0.
+>Master: => 1.0.0.
 
 #### Ramas
->CodeTree: Versiones => 2.0.0
+>CodeTree: => 2.0.0
 
 
 ## Apoyo
