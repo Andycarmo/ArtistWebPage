@@ -8,8 +8,8 @@
 #### Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones y a su vez vender libros de otros escritores (proyecto ciclo 4)
 
     - Se creará una App Web de venta de productos sencilla, en su BackEnd se consumira   
-      recursos del Framework de SpringBoot, uso de UI de Sprinfox Swagger  
-      su base de datos sera de MongoDB y la IDE NetBeans.
+      recursos del Framework de SpringBoot, uso de UI de SpringFox Swagger  
+      su base de datos sera de MongoDB (Compass & Online) y la IDE NetBeans.
     - Se creará un Frontend con recursos del Framework Angular y la IDE VSCode.  
 ![PlumasGit4](https://user-images.githubusercontent.com/83571422/141274272-939c6ce3-125d-45c7-8433-c89703735ff8.jpg)
 
