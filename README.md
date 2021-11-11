@@ -5,7 +5,7 @@
 ![Strars](https://img.shields.io/github/stars/Andycarmo/ArtistWebPage?style=plastic)
 
 
-#### Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones y a su vez vender libros de otros escritores (proyecto ciclo 4)
+#### Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones (Fisicos/Ebooks/Audiolibros) y a su vez vender libros de otros escritores (proyecto ciclo 4)
 
     - Se creará una App Web de venta de productos sencilla, en su BackEnd se consumira   
       recursos del Framework de SpringBoot, uso de UI de SpringFox Swagger  
