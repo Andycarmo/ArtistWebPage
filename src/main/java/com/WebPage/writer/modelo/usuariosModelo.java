@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class usuariosModelo {
     
     @Id
-    private String id;
+    private String cod;
     private String nombres;
     private String apellidos;
     private String email;
@@ -24,12 +24,12 @@ public class usuariosModelo {
     private String ciudad;
     private String direccion;
 
-    public String getId() {
-        return id;
+    public String getCod() {
+        return cod;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     public String getNombres() {

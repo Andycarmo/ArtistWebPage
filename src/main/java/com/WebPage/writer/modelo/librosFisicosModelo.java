@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class librosFisicosModelo {
     
     @Id
-    private String id;
+    private String cod;
     private String nombre;
     private String formato;
     private String autor;
@@ -26,16 +26,12 @@ public class librosFisicosModelo {
     private String idioma;
     private String precio;
 
-    public String getId() {
-        return id;
+    public String getCod() {
+        return cod;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     public void setNombre(String nombre) {

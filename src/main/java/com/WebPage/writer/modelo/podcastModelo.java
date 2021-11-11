@@ -15,19 +15,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class podcastModelo {
     
      @Id
-    private String id;
+    private String cod;
     private String nombre;
     private String formato;
     private String fechaGrabacion;
     private String tematica;
     private String invitado;
 
-    public String getId() {
-        return id;
+    public String getCod() {
+        return cod;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     public String getNombre() {
