@@ -7,8 +7,8 @@
 
 #### Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones y a su vez vender libros de otros escritores (proyecto ciclo 4)
 
-    - Se creará una App Web de venta de productos sencilla con un donde su BackEnd  
-      seran recursos del Framewoork de SpringBoot, uso de UI de Sprinfox Swagger  
+    - Se creará una App Web de venta de productos sencilla, en su BackEnd se consumira   
+      recursos del Framewoork de SpringBoot, uso de UI de Sprinfox Swagger  
       su base de datos sera de MongoDB y la IDE NetBeans.
     - Se creará un Frontend con recursos del Framework Angular y la IDE VSCode.  
     
