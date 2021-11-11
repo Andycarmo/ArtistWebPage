@@ -3,3 +3,18 @@ Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus v
 
 ![PlumasGit](https://user-images.githubusercontent.com/83571422/140606327-e944c903-8d38-4017-b879-5ec79b1bca92.jpg)
 
+
+
+## Versiones
+>Master: Versiones => 1.0.0.
+
+#### Ramas
+>CodeTree: Versiones => 2.0.0
+
+
+## Apoyo
+Por favor, no dudes en [crear un issues](https://github.com/Andycarmo/ArtistWebPage/issues/new) si tienes preguntas o problemas.
+
+## Sobre 'Artist Web Page' 
+Artist Web Page es construido por [AndyCarmo](https://github.com/Andycarmo), [juanandresg](https://github.com/juanandresg), y [Camila0914](https://github.com/Camila0914)
+
