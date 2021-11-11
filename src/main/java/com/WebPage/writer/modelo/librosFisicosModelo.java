@@ -34,6 +34,10 @@ public class librosFisicosModelo {
         this.cod = cod;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -102,6 +106,5 @@ public class librosFisicosModelo {
         this.precio = precio;
     }
 
-    
     
 }
