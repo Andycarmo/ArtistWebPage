@@ -5,11 +5,14 @@
 ![Strars](https://img.shields.io/github/stars/Andycarmo/ArtistWebPage?style=plastic)
 
 
-Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones y a su vez vender libros de otros escritores (proyecto ciclo 4)
+#### Pagina web diseñada para que un Escritor pueda vender sus libros en todas sus versiones y a su vez vender libros de otros escritores (proyecto ciclo 4)
 
-![PlumasGit](https://user-images.githubusercontent.com/83571422/140606327-e944c903-8d38-4017-b879-5ec79b1bca92.jpg)
-
-
+    - Se creará una App Web de venta de productos sencilla con un donde su BackEnd  
+      seran recursos del Framewoork de SpringBoot, uso de UI de Sprinfox Swagger  
+      su base de datos sera de MongoDB y la IDE NetBeans.
+    - Se creará un Frontend con recursos del Framework Angular y la IDE VSCode.  
+    
+![PlumasGit3](https://user-images.githubusercontent.com/83571422/141273614-2a9a2dc0-2acf-4180-92f1-d7cdaf5d03a8.jpg)
 
 ## Versiones
 >Master: => 1.0.0.
