@@ -6,6 +6,7 @@ package com.WebPage.writer.controlador;
 
 import com.WebPage.writer.modelo.usuariosModelo;
 import com.WebPage.writer.repositorio.usuariosRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/usuarios")
 public class usuariosControlador {
     
+    List<usuariosModelo> listaUsuarios = new ArrayList<>();
+    
     /// Variable de interfaz de Modelo
     @Autowired
     private usuariosRepositorio usu;
     
-    /// Procedimiento guardar
+    /// Procedimiento guardar un solo usuario
     @PostMapping("/guardar")
-    public usuariosModelo guardarUsuario(@Validated @RequestBody usuariosModelo varU){
-        return usu.insert(varU);
+    public usuariosModelo guardarUsuario(@Validated @RequestBody usuariosModelo usuario){
+        return usu.insert(usuario);
+    }
+    
+    /// Procedimiento guardar una lista de usuarios
+    @PostMapping("/guardarAudios")
+    public List<usuariosModelo> guardarUsuarios(@Validated @RequestBody List<usuariosModelo> usuarios){
+        usuarios.stream().forEach(usuariosModelo -> {
+        listaUsuarios.add(usuariosModelo);
+        });
+        return usu.insert(usuarios);
     }
     
     ///Procedimiento consulta general
@@ -63,5 +75,6 @@ public class usuariosControlador {
     /// Procedimiento eliminar usuario
     @DeleteMapping("/eliminar/{id}")
     public void eliminarUsuario(@PathVariable String id){
+        usu.deleteById(id);
     }
 }

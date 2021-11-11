@@ -6,6 +6,7 @@ package com.WebPage.writer.controlador;
 
 import com.WebPage.writer.modelo.ebooksModelo;
 import com.WebPage.writer.repositorio.ebooksRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/ebooks")
 public class ebooksControlador {
     
+    List<ebooksModelo> listaEbooks = new ArrayList<>();
+    
+    
      /// Variable de interfaz de Modelo
     @Autowired
     private ebooksRepositorio ebo;
     
-    /// Procedimiento guardar
-    @PostMapping("/guardar")
-    public ebooksModelo guardarEbook(@Validated @RequestBody ebooksModelo varE){
-        return ebo.insert(varE);
+    /// Procedimiento guardar un solo producto
+    @PostMapping("/guardarEbook")
+    public ebooksModelo guardarEbook(@Validated @RequestBody ebooksModelo ebook){
+        return ebo.insert(ebook);
+    }
+    
+    /// Procedimiento guardar una lista de productos
+    @PostMapping("/guardarEbooks")
+    public List<ebooksModelo> guardarEbooks(@Validated @RequestBody List<ebooksModelo> ebooks){
+        ebooks.stream().forEach(ebooksModelo -> {
+        listaEbooks.add(ebooksModelo);
+        });
+        return ebo.insert(ebooks);
     }
     
     ///Procedimiento consulta general
@@ -63,5 +76,6 @@ public class ebooksControlador {
     /// Procedimiento eliminar ebook
     @DeleteMapping("/eliminar/{id}")
     public void eliminarEbook(@PathVariable String id){
+        ebo.deleteById(id);
     }
 }

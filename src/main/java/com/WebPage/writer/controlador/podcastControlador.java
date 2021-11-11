@@ -6,6 +6,7 @@ package com.WebPage.writer.controlador;
 
 import com.WebPage.writer.modelo.podcastModelo;
 import com.WebPage.writer.repositorio.podcastRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/podcast")
 public class podcastControlador {
     
+    List<podcastModelo> listaPodcasts = new ArrayList<>();
+    
     /// Variable de interfaz de Modelo
     @Autowired
     private podcastRepositorio pod;
     
-    /// Procedimiento guardar
-    @PostMapping("/guardar")
-    public podcastModelo guardarPodcast(@Validated @RequestBody podcastModelo varPC){
-        return pod.insert(varPC);
+    /// Procedimiento guardar un solo producto
+    @PostMapping("/guardarPodcast")
+    public podcastModelo guardarPodcast(@Validated @RequestBody podcastModelo podcast){
+        return pod.insert(podcast);
+    }
+    
+    /// Procedimiento guardar una lista de productos
+    @PostMapping("/guardarPodcasts")
+    public List<podcastModelo> guardarPodcasts(@Validated @RequestBody List<podcastModelo> podcasts){
+        podcasts.stream().forEach(podcastModelo -> {
+        listaPodcasts.add(podcastModelo);
+        });
+        return pod.insert(podcasts);
     }
     
     ///Procedimiento consulta general
@@ -63,6 +75,7 @@ public class podcastControlador {
     /// Procedimiento eliminar podcast
     @DeleteMapping("/eliminar/{id}")
     public void eliminarPodcast(@PathVariable String id){
+        pod.deleteById(id);
     }
     
 }

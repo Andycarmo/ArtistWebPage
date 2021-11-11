@@ -6,6 +6,7 @@ package com.WebPage.writer.controlador;
 
 import com.WebPage.writer.modelo.librosPropiosModelo;
 import com.WebPage.writer.repositorio.librosPropiosRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/librosPropios")
 public class librosPropiosControlador {
     
+    List<librosPropiosModelo> listaLibrosPropios = new ArrayList<>();
+    
     /// Variable de interfaz de Modelo
     @Autowired
     private librosPropiosRepositorio libP;
     
-    /// Procedimiento guardar
-    @PostMapping("/guardar")
-    public librosPropiosModelo guardarLibroPropio(@Validated @RequestBody librosPropiosModelo varLP){
-        return libP.insert(varLP);
+    /// Procedimiento guardar un solo producto
+    @PostMapping("/guardarLibroPropio")
+    public librosPropiosModelo guardarLibroPropio(@Validated @RequestBody librosPropiosModelo libro){
+        return libP.insert(libro);
+    }
+    
+    /// Procedimiento guardar una lista de productos
+    @PostMapping("/guardarLibrosPropios")
+    public List<librosPropiosModelo> guardarLibrosPropios(@Validated @RequestBody List<librosPropiosModelo> libros){
+        libros.stream().forEach(librosPropiosModelo -> {
+        listaLibrosPropios.add(librosPropiosModelo);
+        });
+        return libP.insert(libros);
     }
     
     ///Procedimiento consulta general
@@ -63,5 +75,6 @@ public class librosPropiosControlador {
     /// Procedimiento eliminar libro propio
     @DeleteMapping("/eliminar/{id}")
     public void eliminarLibroPropio(@PathVariable String id){
+        libP.deleteById(id);
     }
 }

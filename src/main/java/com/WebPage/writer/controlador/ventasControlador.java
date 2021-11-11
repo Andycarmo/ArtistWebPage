@@ -63,5 +63,6 @@ public class ventasControlador {
     /// Procedimiento eliminar ventas
     @DeleteMapping("/eliminar/{id}")
     public void eliminarVentas(@PathVariable String id){
+        ven.deleteById(id);
     }
 }

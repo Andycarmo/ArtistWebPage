@@ -6,6 +6,7 @@ package com.WebPage.writer.controlador;
 
 import com.WebPage.writer.modelo.audiolibrosModelo;
 import com.WebPage.writer.repositorio.audiolibroRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/audiolibro")
 public class audiolibrosControlador {
     
+    List<audiolibrosModelo> listaAudios = new ArrayList<>();
+    
     /// Variable de interfaz de Modelo
     @Autowired
     private audiolibroRepositorio aud;
     
-    /// Procedimiento guardar
-    @PostMapping("/guardar")
-    public audiolibrosModelo guardarAudiolibro(@Validated @RequestBody audiolibrosModelo varA){
-        return aud.insert(varA);
+    /// Procedimiento guardar un solo producto
+    @PostMapping("/guardarAudio")
+    public audiolibrosModelo guardarAudiolibro(@Validated @RequestBody audiolibrosModelo audioLibro){
+        return aud.insert(audioLibro);
+    }
+    
+    /// Procedimiento guardar una lista de productos
+    @PostMapping("/guardarAudios")
+    public List<audiolibrosModelo> guardarAudiolibros(@Validated @RequestBody List<audiolibrosModelo> audioLibros){
+        audioLibros.stream().forEach(audiolibrosModelo -> {
+        listaAudios.add(audiolibrosModelo);
+        });
+        return aud.insert(audioLibros);
     }
     
     ///Procedimiento consulta general
@@ -63,5 +75,6 @@ public class audiolibrosControlador {
     /// Procedimiento eliminar audiolibro
     @DeleteMapping("/eliminar/{id}")
     public void eliminarAudiolibro(@PathVariable String id){
+        aud.deleteById(id);
     }
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.WebPage.writer.repositorio.librosFisicosRepositorio;
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -32,14 +33,25 @@ import java.util.Optional;
 @RequestMapping("/api/librosFisicos")
 public class librosFisicosControlador {
     
+    List<librosFisicosModelo> listaLibrosFisicos = new ArrayList<>();
+    
     /// Variable de interfaz de Modelo
     @Autowired
     private librosFisicosRepositorio lib;
     
-    /// Procedimiento guardar
-    @PostMapping("/guardar")
-    public librosFisicosModelo guardarLibro(@Validated @RequestBody librosFisicosModelo varL){
-        return lib.insert(varL);
+    /// Procedimiento guardar un solo producto
+    @PostMapping("/guardarlibro")
+    public librosFisicosModelo guardarLibro(@Validated @RequestBody librosFisicosModelo libro){
+        return lib.insert(libro);
+    }
+    
+    /// Procedimiento guardar una lista de productos
+    @PostMapping("/guardarAudios")
+    public List<librosFisicosModelo> guardarLibros(@Validated @RequestBody List<librosFisicosModelo> libros){
+        libros.stream().forEach(librosFisicosModelo -> {
+        listaLibrosFisicos.add(librosFisicosModelo);
+        });
+        return lib.insert(libros);
     }
     
     ///Procedimiento consulta general
@@ -63,5 +75,6 @@ public class librosFisicosControlador {
     /// Procedimiento eliminar libro fisico
     @DeleteMapping("/eliminar/{id}")
     public void eliminarLibro(@PathVariable String id){
+        lib.deleteById(id);
     }
 }
