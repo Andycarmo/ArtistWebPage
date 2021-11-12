@@ -4,6 +4,7 @@
  */
 package com.WebPage.writer.modelo;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ebooksModelo {
    
     @Id
+    private ObjectId id;
     private String cod;
     private String nombre;
     private String formato;
@@ -27,93 +29,101 @@ public class ebooksModelo {
     private String reseña;
     private String precio; 
 
-        public String getCod() {
-            return cod;
-        }
+    public ObjectId getId() {
+        return id;
+    }
 
-        public void setCod(String cod) {
-            this.cod = cod;
-        }
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
-        public String getNombre() {
-            return nombre;
-        }
+    public String getCod() {
+        return cod;
+    }
 
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
 
-        public String getFormato() {
-            return formato;
-        }
+    public String getNombre() {
+        return nombre;
+    }
 
-        public void setFormato(String formato) {
-            this.formato = formato;
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-        public String getAutor() {
-            return autor;
-        }
+    public String getFormato() {
+        return formato;
+    }
 
-        public void setAutor(String autor) {
-            this.autor = autor;
-        }
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
 
-        public String getEditorial() {
-            return editorial;
-        }
+    public String getAutor() {
+        return autor;
+    }
 
-        public void setEditorial(String editorial) {
-            this.editorial = editorial;
-        }
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 
-        public String getCategoria() {
-            return categoria;
-        }
+    public String getEditorial() {
+        return editorial;
+    }
 
-        public void setCategoria(String categoria) {
-            this.categoria = categoria;
-        }
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
 
-        public String getAño() {
-            return año;
-        }
+    public String getCategoria() {
+        return categoria;
+    }
 
-        public void setAño(String año) {
-            this.año = año;
-        }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-        public String getIdioma() {
-            return idioma;
-        }
+    public String getAño() {
+        return año;
+    }
 
-        public void setIdioma(String idioma) {
-            this.idioma = idioma;
-        }
+    public void setAño(String año) {
+        this.año = año;
+    }
 
-        public String getEncuadernacion() {
-            return encuadernacion;
-        }
+    public String getIdioma() {
+        return idioma;
+    }
 
-        public void setEncuadernacion(String encuadernacion) {
-            this.encuadernacion = encuadernacion;
-        }
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
 
-        public String getReseña() {
-            return reseña;
-        }
+    public String getEncuadernacion() {
+        return encuadernacion;
+    }
 
-        public void setReseña(String reseña) {
-            this.reseña = reseña;
-        }
+    public void setEncuadernacion(String encuadernacion) {
+        this.encuadernacion = encuadernacion;
+    }
 
-        public String getPrecio() {
-            return precio;
-        }
+    public String getReseña() {
+        return reseña;
+    }
 
-        public void setPrecio(String precio) {
-            this.precio = precio;
-        }
-    
+    public void setReseña(String reseña) {
+        this.reseña = reseña;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
     
 }

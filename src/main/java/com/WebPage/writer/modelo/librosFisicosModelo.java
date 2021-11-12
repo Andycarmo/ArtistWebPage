@@ -4,6 +4,7 @@
  */
 package com.WebPage.writer.modelo;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class librosFisicosModelo {
     
     @Id
+    private ObjectId id;
     private String cod;
     private String nombre;
     private String formato;
@@ -26,6 +28,14 @@ public class librosFisicosModelo {
     private String idioma;
     private String precio;
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+
+    }    
     public String getCod() {
         return cod;
     }
