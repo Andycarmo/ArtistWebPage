@@ -25,7 +25,7 @@ public class ebooksModelo {
     private String year;
     private String idioma;
     private String encuadernacion;
-    private String reseña;
+    private String descripcion;
     private String precio; 
 
     public String getId() {
@@ -108,12 +108,12 @@ public class ebooksModelo {
         this.encuadernacion = encuadernacion;
     }
 
-    public String getReseña() {
-        return reseña;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setReseña(String reseña) {
-        this.reseña = reseña;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getPrecio() {
