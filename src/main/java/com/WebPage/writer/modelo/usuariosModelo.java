@@ -4,7 +4,6 @@
  */
 package com.WebPage.writer.modelo;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class usuariosModelo {
     
     @Id
-    private ObjectId id;
+    private String id;
     private String cod;
     private String nombres;
     private String apellidos;
@@ -26,11 +25,11 @@ public class usuariosModelo {
     private String ciudad;
     private String direccion;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
