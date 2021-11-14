@@ -22,7 +22,7 @@ public class audiolibrosModelo {
     private String autor;
     private String editorial;
     private String categoria;
-    private String año;
+    private String year;
     private String idioma;
     private String precio; 
 
@@ -82,12 +82,12 @@ public class audiolibrosModelo {
         this.categoria = categoria;
     }
 
-    public String getAño() {
-        return año;
+    public String getYear() {
+        return year;
     }
 
-    public void setAño(String año) {
-        this.año = año;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getIdioma() {
