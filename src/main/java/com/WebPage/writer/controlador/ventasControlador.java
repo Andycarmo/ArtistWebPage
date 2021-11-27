@@ -9,6 +9,9 @@ import com.WebPage.writer.repositorio.ventasRepositorio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,8 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ventasControlador {
     
     /// Variable de interfaz de Modelo
-    @Autowired
-    private ventasRepositorio ven;
+    @Autowired private ventasRepositorio ven;
+    @Autowired private MongoTemplate m;
     
     /// Procedimiento guardar
     @PostMapping("/guardar")
@@ -54,9 +57,35 @@ public class ventasControlador {
         return ven.findById(id);
     }
     
+    ///Procedimiento consulta por codigo
+    @GetMapping("/consultarCod/{cod}")
+    public List<ventasModelo> consultarVentasCod(@PathVariable (value="cod") String cod){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        return m.find(q, ventasModelo.class);
+    }    
+
+    ///Procedimiento consulta por nombre
+    @GetMapping("/consultarNombre/{nombre}")
+    public List<ventasModelo> consultarVentasNombre(@PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, ventasModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{cod}/{nombre}")
+    public List<ventasModelo> consultarVentasParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, ventasModelo.class);
+    }
+    
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
     public ventasModelo actualizarVentas(@PathVariable String id, @Validated @RequestBody ventasModelo varV){
+        ven.deleteById(id);
         return ven.save(varV);
     }
     

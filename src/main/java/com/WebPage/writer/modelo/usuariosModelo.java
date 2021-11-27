@@ -20,6 +20,8 @@ public class usuariosModelo {
     private String nombres;
     private String apellidos;
     private String email;
+    private String usuario;
+    private String password;
     private String telefono;
     private String pais;
     private String ciudad;
@@ -63,6 +65,22 @@ public class usuariosModelo {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTelefono() {

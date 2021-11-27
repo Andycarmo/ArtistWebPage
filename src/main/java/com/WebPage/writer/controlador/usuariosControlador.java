@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,8 +39,8 @@ public class usuariosControlador {
     List<usuariosModelo> listaUsuarios = new ArrayList<>();
     
     /// Variable de interfaz de Modelo
-    @Autowired
-    private usuariosRepositorio usu;
+    @Autowired private usuariosRepositorio usu;
+    @Autowired private MongoTemplate u;
     
     /// Procedimiento guardar un solo usuario
     @PostMapping("/guardar")
@@ -66,9 +69,44 @@ public class usuariosControlador {
         return usu.findById(id);
     }
     
+    ///Procedimiento consulta por codigo
+    @GetMapping("/consultarCod/{cod}")
+    public List<usuariosModelo> consultarUsuariosCod(@PathVariable (value="cod") String cod){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        return u.find(q, usuariosModelo.class);
+    }    
+
+    ///Procedimiento consulta por nombre
+    @GetMapping("/consultarNombre/{nombre}")
+    public List<usuariosModelo> consultarUsuariosNombre(@PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return u.find(q, usuariosModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{cod}/{nombre}")
+    public List<usuariosModelo> consultarUsuariosParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return u.find(q, usuariosModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{usuario}/{password}")
+    public List<usuariosModelo> consultarUsuariosParametrosPass(@PathVariable (value="usuario")String usuario, @PathVariable (value="password") String password){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("usuario").is(usuario));
+        q.addCriteria(Criteria.where("password").is(password));
+        return u.find(q, usuariosModelo.class);
+    }
+    
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
     public usuariosModelo actualizarUsuario(@PathVariable String id, @Validated @RequestBody usuariosModelo varU){
+        usu.deleteById(id);
         return usu.save(varU);
     }
     

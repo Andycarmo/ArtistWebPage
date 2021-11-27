@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,8 +39,8 @@ public class podcastControlador {
     List<podcastModelo> listaPodcasts = new ArrayList<>();
     
     /// Variable de interfaz de Modelo
-    @Autowired
-    private podcastRepositorio pod;
+    @Autowired private podcastRepositorio pod;
+    @Autowired private MongoTemplate m;
     
     /// Procedimiento guardar un solo producto
     @PostMapping("/guardarPodcast")
@@ -66,9 +69,35 @@ public class podcastControlador {
         return pod.findById(id);
     }
     
+        ///Procedimiento consulta por codigo
+    @GetMapping("/consultarCod/{cod}")
+    public List<podcastModelo> consultarPodcastsCod(@PathVariable (value="cod") String cod){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        return m.find(q, podcastModelo.class);
+    }    
+
+    ///Procedimiento consulta por nombre
+    @GetMapping("/consultarNombre/{nombre}")
+    public List<podcastModelo> consultarLibrosPropiosNombre(@PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, podcastModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{cod}/{nombre}")
+    public List<podcastModelo> consultarLibrosPropiosParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, podcastModelo.class);
+    }
+    
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
     public podcastModelo actualizarPodcast(@PathVariable String id, @Validated @RequestBody podcastModelo varPC){
+        pod.deleteById(id);
         return pod.save(varPC);
     }
     

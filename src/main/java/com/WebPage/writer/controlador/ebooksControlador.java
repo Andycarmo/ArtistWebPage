@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,8 +40,8 @@ public class ebooksControlador {
     
     
      /// Variable de interfaz de Modelo
-    @Autowired
-    private ebooksRepositorio ebo;
+    @Autowired private ebooksRepositorio ebo;
+    @Autowired private MongoTemplate m;
     
     /// Procedimiento guardar un solo producto
     @PostMapping("/guardarEbook")
@@ -67,9 +70,35 @@ public class ebooksControlador {
         return ebo.findById(id);
     }
     
+    ///Procedimiento consulta por codigo
+    @GetMapping("/consultarCod/{cod}")
+    public List<ebooksModelo> consultarEbookCod(@PathVariable (value="cod") String cod){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        return m.find(q, ebooksModelo.class);
+    }    
+
+    ///Procedimiento consulta por nombre
+    @GetMapping("/consultarNombre/{nombre}")
+    public List<ebooksModelo> consultarEbookNombre(@PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, ebooksModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{cod}/{nombre}")
+    public List<ebooksModelo> consultarEbookParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, ebooksModelo.class);
+    }
+    
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
     public ebooksModelo actualizarEbook(@PathVariable String id, @Validated @RequestBody ebooksModelo varE){
+        ebo.deleteById(id);
         return ebo.save(varE);
     }
     

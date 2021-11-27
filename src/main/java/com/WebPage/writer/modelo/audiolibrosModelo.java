@@ -18,6 +18,7 @@ public class audiolibrosModelo {
     private String id;
     private String cod;
     private String nombre;
+    private String imagen;
     private String formato;
     private String autor;
     private String editorial;
@@ -48,6 +49,14 @@ public class audiolibrosModelo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public String getFormato() {

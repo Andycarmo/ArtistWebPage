@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,15 +32,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*",methods = {RequestMethod.POST,RequestMethod.GET,RequestMethod.DELETE,RequestMethod.PUT})
-
 @RequestMapping("/api/librosPropios")
 public class librosPropiosControlador {
     
     List<librosPropiosModelo> listaLibrosPropios = new ArrayList<>();
     
     /// Variable de interfaz de Modelo
-    @Autowired
-    private librosPropiosRepositorio libP;
+    @Autowired private librosPropiosRepositorio libP;
+    @Autowired private MongoTemplate m;
     
     /// Procedimiento guardar un solo producto
     @PostMapping("/guardarLibroPropio")
@@ -66,9 +68,35 @@ public class librosPropiosControlador {
         return libP.findById(id);
     }
     
+    ///Procedimiento consulta por codigo
+    @GetMapping("/consultarCod/{cod}")
+    public List<librosPropiosModelo> consultarLibrosPropiosCod(@PathVariable (value="cod") String cod){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        return m.find(q, librosPropiosModelo.class);
+    }    
+
+    ///Procedimiento consulta por nombre
+    @GetMapping("/consultarNombre/{nombre}")
+    public List<librosPropiosModelo> consultarLibrosPropiosNombre(@PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, librosPropiosModelo.class);
+    }
+    
+    ///Procedimiento consulta por varios parametros
+    @GetMapping("/consultarParametros/{cod}/{nombre}")
+    public List<librosPropiosModelo> consultarLibrosPropiosParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+        Query q = new Query();
+        q.addCriteria(Criteria.where("cod").is(cod));
+        q.addCriteria(Criteria.where("nombre").is(nombre));
+        return m.find(q, librosPropiosModelo.class);
+    }
+    
     /// Procedimiento actualizar
     @PutMapping("/actualizar/{id}")
     public librosPropiosModelo actualizarLibroPropios(@PathVariable String id, @Validated @RequestBody librosPropiosModelo varLP){
+        libP.deleteById(id);
         return libP.save(varLP);
     }
     
