@@ -65,7 +65,7 @@ public class podcastControlador {
     
     ///Procedimiento consulta individual
     @GetMapping("/consultar/{id}")
-    public Optional<podcastModelo> consultarPodcastsID(@PathVariable String id){
+    public Optional<podcastModelo> consultarPodcasts(@PathVariable String id){
         return pod.findById(id);
     }
     
@@ -79,7 +79,7 @@ public class podcastControlador {
 
     ///Procedimiento consulta por nombre
     @GetMapping("/consultarNombre/{nombre}")
-    public List<podcastModelo> consultarLibrosPropiosNombre(@PathVariable (value="nombre") String nombre){
+    public List<podcastModelo> consultarPodcastsNombre(@PathVariable (value="nombre") String nombre){
         Query q = new Query();
         q.addCriteria(Criteria.where("nombre").is(nombre));
         return m.find(q, podcastModelo.class);
@@ -87,7 +87,7 @@ public class podcastControlador {
     
     ///Procedimiento consulta por varios parametros
     @GetMapping("/consultarParametros/{cod}/{nombre}")
-    public List<podcastModelo> consultarLibrosPropiosParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
+    public List<podcastModelo> consultarPodcastsParametros(@PathVariable (value="cod")String cod, @PathVariable (value="nombre") String nombre){
         Query q = new Query();
         q.addCriteria(Criteria.where("cod").is(cod));
         q.addCriteria(Criteria.where("nombre").is(nombre));

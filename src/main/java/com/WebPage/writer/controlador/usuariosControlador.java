@@ -95,7 +95,7 @@ public class usuariosControlador {
     }
     
     ///Procedimiento consulta por varios parametros
-    @GetMapping("/consultarParametros/{usuario}/{password}")
+    @GetMapping("/consultarParametrosPass/{usuario}/{password}")
     public List<usuariosModelo> consultarUsuariosParametrosPass(@PathVariable (value="usuario")String usuario, @PathVariable (value="password") String password){
         Query q = new Query();
         q.addCriteria(Criteria.where("usuario").is(usuario));
