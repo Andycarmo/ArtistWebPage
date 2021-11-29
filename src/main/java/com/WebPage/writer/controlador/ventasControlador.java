@@ -59,7 +59,7 @@ public class ventasControlador {
     
     ///Procedimiento consulta por codigo
     @GetMapping("/consultarCod/{cod}")
-    public List<ventasModelo> consultarVentasCod(@PathVariable (value="cod") String cod){
+    public List<ventasModelo> consultarVentasCodigo(@PathVariable (value="cod") String cod){
         Query q = new Query();
         q.addCriteria(Criteria.where("cod").is(cod));
         return m.find(q, ventasModelo.class);
