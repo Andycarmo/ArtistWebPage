@@ -43,13 +43,13 @@ public class usuariosControlador {
     @Autowired private MongoTemplate u;
     
     /// Procedimiento guardar un solo usuario
-    @PostMapping("/guardar")
+    @PostMapping("/guardarUsuario")
     public usuariosModelo guardarUsuario(@Validated @RequestBody usuariosModelo usuario){
         return usu.insert(usuario);
     }
     
     /// Procedimiento guardar una lista de usuarios
-    @PostMapping("/guardarAudios")
+    @PostMapping("/guardarUsuarios")
     public List<usuariosModelo> guardarUsuarios(@Validated @RequestBody List<usuariosModelo> usuarios){
         usuarios.stream().forEach(usuariosModelo -> {
         listaUsuarios.add(usuariosModelo);
